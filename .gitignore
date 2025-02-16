@@ -1,6 +1,4 @@
-# Dependency directories
-node_modules/
-jspm_packages/
+# ignore data
 data/medias/*
 
 # Logs
