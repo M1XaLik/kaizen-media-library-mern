@@ -1,0 +1,898 @@
+html {
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --background_color: #000000;
+}
+
+body {
+    background-color: #020b14;
+    /* background-color: #0e7c7b; */
+
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+    padding: 0;
+
+    height: 100vh;
+}
+
+/* LOADER  */
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* AUTH PAGES */
+
+/* KAIZEN */
+.above-auth-text {
+    display: block;
+
+    color: white;
+    font-size: 40px;
+
+    transition: transform 0.2s ease;
+}
+
+.auth-page-card {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.auth-page-card hr {
+    width: 20px;
+    margin: 20px 0px 20px 0px;
+    border-radius: 5px;
+}
+
+.login-form {
+    display: block;
+
+    background-color: #0a2239;
+    padding: 5%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    width: 500px;
+
+    text-align: center;
+}
+.login-form h2 {
+    margin-bottom: 20px;
+    color: white;
+    font-size: 40px;
+}
+.login-form p {
+    color: white;
+    margin-bottom: 5%;
+}
+
+.input-group {
+    margin-bottom: 5%;
+    text-align: left;
+
+    /* верх ліво низ право */
+    /* margin: 0px 20px 20px 20px; */
+}
+.input-group label {
+    color: white;
+    display: block;
+    margin-bottom: 10px;
+
+    font-size: 23px;
+}
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: 0px 0px 10px 0px black;
+
+    background-color: #020b14;
+    color: white;
+    transition: transform 0.2s;
+}
+.input-group input:focus {
+    border: 1px solid white;
+    transform: scale(1.1);
+    /* box-shadow: 0px 0px 10px 0px white; */
+}
+
+.login-form button {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #b3c2f2;
+    color: black;
+    font-size: 16px;
+    transition: transform 0.2s;
+    box-shadow: 0px 0px 10px 0px black;
+    cursor: pointer;
+}
+.login-form button:hover {
+    /* border: 1px solid white; */
+    box-shadow: 0px 0px 10px 0px black;
+    transform: scale(1.1);
+}
+
+.login-form-button-container {
+    display: flex;
+    gap: 40px;
+}
+.login-form-button-container a {
+    text-decoration: none;
+    margin: 0px;
+    color: black;
+}
+
+.login-form-link {
+    margin-top: 15px;
+
+    /* CENTER LINK  */
+    margin-left: auto;
+    margin-right: auto;
+
+    /* INDIVIDUAL BLOCK */
+    display: block;
+
+    font-size: 16px;
+    color: #007bff;
+
+    transition: 0.3s ease;
+    border-radius: 5px;
+}
+.login-form-link:hover {
+    color: #0056b3;
+    /* border: 1px solid white; */
+}
+
+/* WEBSITE CONTENT STYLES*/
+
+.page-content {
+    margin-top: 14vh;
+
+    /* used this when there were .credits on the page  */
+    padding-bottom: 7vh;
+}
+
+.navbar {
+    display: flex;
+    position: fixed;
+    top: 0;
+    padding: 20px 0;
+    text-align: center;
+    justify-content: center;
+    left: 0;
+    right: 0;
+
+    z-index: 1000;
+}
+
+.navbar-wrapper {
+    background-color: #0a2239;
+    padding: 10px 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px;
+    /* border: 2px solid #020b14; */
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    display: inline;
+    margin: 7px 7px;
+}
+
+.navbar a {
+    color: black;
+    text-decoration: none;
+    font-size: medium;
+}
+
+.navbar button {
+    text-decoration: none;
+    background: none;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 10px;
+    box-shadow: 0px 0px 10px 0px;
+
+    transition: transform 0.2s;
+}
+.navbar button:hover {
+    /* background-color: #e90d53; */
+    /* background-color: #f5cb5c; */
+    text-decoration: none;
+    cursor: pointer;
+
+    /* CHANGE  */
+    transform: scale(1.1);
+}
+
+.search-container {
+    text-align: center;
+}
+
+.search-box {
+    padding: 10px;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    /* background-color: #020b14; */
+
+    font-size: 16px;
+
+    border: 1px solid gray;
+
+    /* color: white; */
+
+    transition: 0.2s ease;
+}
+.search-box:focus {
+    border-color: white;
+    max-width: 700px;
+}
+
+.library-page-search-status {
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.category-title {
+    color: white;
+    margin-left: 5%;
+    font-size: 20px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 0 5%;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+.grid-item {
+    position: relative;
+    z-index: 1;
+
+    color: white;
+
+    border-radius: 10px;
+    padding: 10px;
+    text-decoration: none;
+
+    background-color: #0a2239;
+    /* border: 2px solid #415a77;  */
+
+    box-shadow: 0px 0px 10px 0px black;
+
+    transition: transform 0.2s;
+}
+.grid-item:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    z-index: 999;
+}
+.grid-item img {
+    border-radius: 5px;
+    width: 100%;
+    height: auto;
+}
+
+.grid-item-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #f8f9fa;
+}
+
+.grid-item-author {
+    font-size: 0.9rem;
+    color: #a8c0d5;
+}
+
+.grid-item-description {
+    font-size: 0.95rem;
+    color: #c5cbd3;
+}
+
+/* VIEW PAGE  */
+
+/* videoelement */
+.media-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.view-media {
+    max-width: 90vw;
+    height: 80vh;
+    border-radius: 10px;
+
+    outline: 2px solid #415a77;
+    outline-offset: 6px;
+
+    margin-top: 10px;
+
+    object-fit: contain;
+}
+
+/* OTHER STYLES  */
+
+/* Container for the media information section */
+.media-page-about-section-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #0d1b2a; /* Dark background */
+    border: 2px solid #415a77; /* Non-blurry border */
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    margin: 20px auto;
+    color: #e0e1dd;
+}
+
+/* Main description block */
+.media-page-description {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+/* Layout for the image and text */
+.media-description-flex-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Album cover image */
+.media-page-album-cover {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #778da9;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Hover effect for the album cover */
+.media-page-album-cover:hover {
+    transform: scale(1.05);
+}
+
+/* Container for media details (title, author, etc.) */
+.media-description-flex-section div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Labels (e.g., "Title:", "Author:") */
+.media-description-flex-section p {
+    font-size: 14px;
+    font-weight: bold;
+    color: #a8dadc;
+    margin: 0;
+}
+
+/* Values (e.g., actual title, author name) */
+.media-description-flex-section h2 {
+    font-size: 18px;
+    color: #fff;
+    margin: 0;
+}
+
+/* Styling for the long description text */
+.media-page-description p:last-of-type {
+    font-size: 16px;
+    line-height: 1.4;
+    color: #e0e1dd;
+    margin-top: 10px;
+    text-align: justify;
+}
+
+.slider-grid-container {
+    position: relative;
+
+    margin-top: 10px;
+    margin-left: 2%;
+    margin-right: 2%;
+
+    overflow-x: auto;
+
+    display: grid;
+    grid-template-columns: repeat(5, minmax(200px, 1fr));
+    /* white-space: nowrap; */
+    gap: 1.2rem;
+
+    padding: 20px;
+}
+
+.page-title-text {
+    font-size: 2rem;
+    color: white;
+
+    text-align: center;
+
+    margin-top: 6%;
+    margin-bottom: 1%;
+}
+
+/* SPECIFICLY FOR LIBRARY PAGE  */
+.library-page-title-text {
+    font-size: 2rem;
+    color: white;
+
+    text-align: center;
+
+    margin-top: 10%;
+    margin-bottom: 1%;
+}
+
+.library-grid-item {
+    position: relative;
+    z-index: 1;
+
+    color: white;
+
+    border-radius: 10px;
+    padding: 10px;
+    text-decoration: none;
+    background-color: #0a2239;
+    /* background-color: #c5c3db; */
+
+    box-shadow: 0px 0px 10px 0px black;
+
+    transition: transform 0.2s;
+}
+.library-grid-item:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    z-index: 999;
+}
+.library-grid-item img {
+    border-radius: 5px;
+    width: 100%;
+    height: auto;
+}
+.library-grid-item-description {
+    margin: 5px;
+
+    /* text-align: center; */
+}
+
+/* UPLOAD FORM && PAGE */
+
+/* General style for the form */
+.form-background {
+    background-color: #0a2239;
+    border-radius: 12px;
+    padding: 25px;
+    max-width: 500px;
+    margin: 0 auto;
+    color: white;
+    font-size: 18px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+    border: 2px solid #415a77;
+}
+
+/* Styles for file upload buttons */
+.file-input-wrapper {
+    width: 100%;
+    margin: 5px 0 10px 0;
+}
+
+.file-input {
+    width: 90%; /* Occupies 90% of the form width */
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.file-input:hover {
+    background-color: #ccc;
+    border: none;
+}
+
+.file-input::file-selector-button {
+    display: none;
+}
+
+/* Styles for text fields */
+.form-text-field {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+
+    transition: 0.1s ease;
+
+    font-size: 16px;
+}
+
+.form-text-field:focus {
+    outline: 1px solid #ccc;
+    outline-offset: 4px;
+}
+
+/* Styles for submit buttons */
+.submit-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    display: block;
+
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+}
+
+/* Styles for labels */
+.form-background label {
+    font-weight: bold;
+    color: white;
+}
+
+/* Styles for select and textarea */
+select.form-text-field,
+textarea.form-text-field {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* USER PAGE  */
+
+.user-profile {
+    color: white;
+    text-align: center;
+    background-color: #0a2239;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-avatar {
+    width: 30%;
+    height: 30%;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.user-nickname,
+.user-email,
+.user-join-date {
+    margin: 5px 0;
+}
+
+.logout-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ff4b4b;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #ff2a2a;
+
+    transform: scale(1.1);
+}
+
+/* ADMIN PANEL */
+/* CENTERED admin-panel-grid-container */
+.admin-panel-grid-container {
+    display: grid;
+    grid-template-columns: 1fr; /* ONE ELEMENT IN A ROW */
+    place-items: center;
+    padding: 10px 5%;
+}
+
+.admin-panel-grid-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    position: relative;
+    z-index: 1;
+
+    color: white;
+    border-radius: 12px;
+    padding: 20px;
+    background-color: #0a2239;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+
+    transition: 0.1s ease-in-out;
+    border: 2px solid transparent;
+}
+.admin-panel-grid-item:hover {
+    cursor: pointer;
+    outline: 2px solid rgba(255, 255, 255, 0.396);
+    outline-offset: 4px;
+}
+
+.admin-panel-grid-item img {
+    border-radius: 5px;
+    width: 100%;
+    height: auto;
+
+    margin: auto;
+}
+
+.admin-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.edit-link,
+.admin-approve-button,
+.admin-delete-button {
+    flex: 1; /* equal the amount of space */
+    padding: 8px 10px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+}
+
+.edit-link {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+}
+.edit-link:hover {
+    background: linear-gradient(135deg, #0056b3, #003b7a);
+    transform: translateY(-2px);
+}
+
+.admin-approve-button {
+    background: linear-gradient(135deg, #28a745, #218838);
+    color: white;
+}
+.admin-approve-button:hover {
+    background: linear-gradient(135deg, #218838, #19692c);
+    transform: translateY(-2px);
+}
+
+.admin-delete-button {
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    color: white;
+}
+.admin-delete-button:hover {
+    background: linear-gradient(135deg, #c82333, #a71d2a);
+    transform: translateY(-2px);
+}
+
+/* EDIT MEDIA PAGE  */
+
+.edit-media-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* min-height: 50vh; */
+    padding: 20px;
+    background-color: #0d1b2a; /* Темний фон для атмосфери */
+    border: 2px solid #415a77; /* Нерозмитий бордер */
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    /* width: 90%; */
+    max-width: 500px;
+    margin: auto;
+}
+
+.edit-media-page-container h1 {
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.edit-media-page-container form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.edit-media-page-container label {
+    font-weight: bold;
+    color: #e0e1dd;
+    margin-bottom: 5px;
+}
+
+.edit-media-page-container input {
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #415a77;
+
+    padding: 10px;
+    margin: 10px 0px 10px 0px;
+
+    font-size: 16px;
+    border-radius: 6px;
+    transition: 0.1s ease;
+}
+
+.edit-media-page-container input:focus {
+    outline: 2px solid #778da9;
+    outline-offset: 4px;
+    border-color: #778da9;
+}
+
+.edit-media-page-container button {
+    background-color: #7b2cbf; /* Стильний фіолетовий */
+    color: #fff;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    margin-top: 15px;
+}
+
+.edit-media-page-container button:hover {
+    transform: translateY(-3px); /* Легке підстрибування */
+}
+
+@media (max-width: 700px) {
+    /* to HIDE some ELEMENTS  */
+    .hide-when-phone-resolution {
+        display: none;
+    }
+
+    .view-media {
+        max-width: inherit;
+        width: 100vw;
+        height: inherit;
+
+        margin: inherit;
+
+        border: none;
+    }
+
+    /* LOGIN PAGE STYLES  */
+    .login-form {
+        width: 90%;
+    }
+
+    .login-form-button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .input-group {
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    .input-group input {
+        width: 50vw;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 500px) {
+    .navbar {
+        bottom: 0;
+        /* intial - return to the default value */
+        top: initial;
+        padding: 0;
+        margin: 0;
+        border: 0;
+
+        display: block;
+        box-sizing: border-box;
+    }
+
+    .navbar a {
+        font-size: small;
+    }
+
+    .navbar-wrapper {
+        border-radius: 0px;
+        border: 0;
+        margin: 0;
+    }
+
+    .page-content {
+        margin-top: 0vh;
+    }
+
+    .slider-grid-container {
+        grid-template-columns: repeat(5, minmax(250px, 1fr));
+    }
+    .slider-grid-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .category-title {
+        font-size: 25px;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+
+    .view-media {
+        width: 100vw;
+        border-radius: inherit;
+    }
+
+    .library-grid-item {
+        padding: 0px;
+        display: flex;
+    }
+    .library-grid-item img {
+        width: 20%;
+    }
+    .library-grid-item-description {
+        display: flex;
+
+        justify-content: center;
+        align-items: left;
+        flex-direction: column;
+    }
+
+    .form-background {
+        border-radius: 0px;
+    }
+}
