@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 // import Loader from "./components/Loader";
 
@@ -30,20 +31,14 @@ const MainPage = () => {
                     return;
                 }
 
-                const response = await fetch(`${serverURL}/`, {
-                    method: "GET",
+                const response = await axios.get(`${serverURL}/`, {
                     headers: {
-                        Authorization: `${token}`,
+                        Authorization: `Bearer ${token}`,
                     },
                 });
 
-                // if RESPONSE is NOT OK throw error
-                if (!response.ok) {
-                    throw new Error("Network response was not ok");
-                }
-
                 // ASSIGN received data to the VARIABLE
-                let data = await response.json();
+                let data = await response.data;
 
                 // if DATA is NOT EMPTY
                 if (data) {
