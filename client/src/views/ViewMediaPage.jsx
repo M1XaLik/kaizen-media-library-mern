@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
+import Loader from "./components/Loader";
+
 // to convert data
 import moment from "moment";
 
@@ -14,6 +16,7 @@ const serverURL = process.env.REACT_APP_SERVER_URL;
 const MediaDetailsPage = () => {
     const { id } = useParams();
     const [media, setMedia] = useState(null);
+    const [isLoading, setIsLoading] = useState(true); // State for loader
 
     useEffect(() => {
         const fetchMedia = async () => {
@@ -33,16 +36,22 @@ const MediaDetailsPage = () => {
                 const data = await response.data;
 
                 setMedia(data);
+                setIsLoading(false); // Hide loader when data is loaded
 
                 // SET DOCUMENT NAME
                 document.title = `Kaizen • ${data.name} - ${data.author}`;
             } catch (error) {
                 console.error("ERROR:", error);
+                setIsLoading(false); // Ensure loader is hidden even in case of error
             }
         };
 
         fetchMedia();
     }, [id]);
+
+    if (isLoading) {
+        return <Loader />; // Show Loader before animation
+    }
 
     if (!media) {
         return <div>NOT FOUND</div>;
@@ -70,9 +79,6 @@ const MediaDetailsPage = () => {
                 </div>
 
                 <br className="hide-when-phone-resolution" />
-                {/* <hr /> */}
-                {/* <br /> */}
-                {/* <br /> */}
 
                 <div className="media-page-about-section-container">
                     <div className="media-page-description">
@@ -91,7 +97,7 @@ const MediaDetailsPage = () => {
                                 <h2>{formattedDate}</h2>
                             </div>
                         </div>
-                        <br /> <p>About:</p> <p>{media.description}</p>{" "}
+                        <br /> <p>About:</p> <p>{media.description}</p>
                     </div>
                 </div>
             </div>

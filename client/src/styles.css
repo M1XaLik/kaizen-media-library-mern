@@ -24,6 +24,7 @@ body {
     display: flex;
     justify-content: center; /* Центрування по горизонталі */
     align-items: center; /* Центрування по вертикалі */
+    height: 100%;
     height: 100vh; /* Висота контейнера – 100% висоти вікна */
 }
 
@@ -34,7 +35,7 @@ body {
     width: 50px;
     height: 50px;
     animation: spin 1s linear infinite; /* Анімація обертання */
-    margin: auto; /* Центрування */
+    /* margin: auto;  */
 }
 
 @keyframes spin {

@@ -1,4 +1,4 @@
-import { Routes, BrowserRouter, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import axios from "axios";
 
 // to use NOTIFICATION
@@ -28,8 +28,9 @@ import { useEffect, useState } from "react";
 
 function App() {
     // USE THIS to know IF USER IS ADMIN or NOT
-
     const [isAdmin, setIsAdmin] = useState(false);
+
+    const location = useLocation();
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -63,73 +64,75 @@ function App() {
         fetchUserData();
     });
 
+    // List of pages where the Navbar should not be displayed
+    const hiddenNavbarPaths = ["/auth", "/register", "/login"];
+
     return (
         <>
-            <BrowserRouter>
-                <Navbar isAdmin={isAdmin} />
-                <ToastContainer />
-                <Routes>
-                    <Route exact path="/auth" element={<AuthPageCard />} />
-                    <Route exact path="/register" element={<Register />} />
-                    <Route exact path="/login" element={<Login />} />
+            {/* TO HIDE NAVBAR ON THE SPECIFIC PAGES  */}
+            {hiddenNavbarPaths.includes(location.pathname) ? null : <Navbar isAdmin={isAdmin} />}
+            <ToastContainer />
+            <Routes>
+                <Route exact path="/auth" element={<AuthPageCard />} />
+                <Route exact path="/register" element={<Register />} />
+                <Route exact path="/login" element={<Login />} />
 
-                    <Route
-                        exact
-                        path="/"
-                        element={
-                            <AuthWrapper>
-                                <MainPage />
-                            </AuthWrapper>
-                        }
-                    />
-                    <Route
-                        exact
-                        path="/library"
-                        element={
-                            <AuthWrapper>
-                                <LibraryPage />
-                            </AuthWrapper>
-                        }
-                    />
-                    <Route
-                        path="/medias/:id"
-                        element={
-                            <AuthWrapper>
-                                <MediaDetailsPage />
-                            </AuthWrapper>
-                        }
-                    />
-                    <Route
-                        exact
-                        path="/upload"
-                        element={
-                            <AuthWrapper>
-                                <UploadMediaPage />
-                            </AuthWrapper>
-                        }
-                    />
-                    <Route
-                        path="/user"
-                        element={
-                            <AuthWrapper>
-                                <UserProfilePage />
-                            </AuthWrapper>
-                        }
-                    />
+                <Route
+                    exact
+                    path="/"
+                    element={
+                        <AuthWrapper>
+                            <MainPage />
+                        </AuthWrapper>
+                    }
+                />
+                <Route
+                    exact
+                    path="/library"
+                    element={
+                        <AuthWrapper>
+                            <LibraryPage />
+                        </AuthWrapper>
+                    }
+                />
+                <Route
+                    path="/medias/:id"
+                    element={
+                        <AuthWrapper>
+                            <MediaDetailsPage />
+                        </AuthWrapper>
+                    }
+                />
+                <Route
+                    exact
+                    path="/upload"
+                    element={
+                        <AuthWrapper>
+                            <UploadMediaPage />
+                        </AuthWrapper>
+                    }
+                />
+                <Route
+                    path="/user"
+                    element={
+                        <AuthWrapper>
+                            <UserProfilePage />
+                        </AuthWrapper>
+                    }
+                />
 
-                    {/* ADMIN PANEL  */}
-                    <Route
-                        path="/admin"
-                        // if user is ADMIN => ELSE navigate to main page
-                        element={isAdmin ? <AdminPanelPage /> : <Navigate to="/" />}
-                    />
-                    <Route
-                        path="/admin/edit/:id"
-                        // if user is ADMIN => ELSE navigate to main page
-                        element={isAdmin ? <AdminEditMediaPage /> : <Navigate to="/" />}
-                    />
-                </Routes>
-            </BrowserRouter>
+                {/* ADMIN PANEL  */}
+                <Route
+                    path="/admin"
+                    // if user is ADMIN => ELSE navigate to main page
+                    element={isAdmin ? <AdminPanelPage /> : <Navigate to="/" />}
+                />
+                <Route
+                    path="/admin/edit/:id"
+                    // if user is ADMIN => ELSE navigate to main page
+                    element={isAdmin ? <AdminEditMediaPage /> : <Navigate to="/" />}
+                />
+            </Routes>
         </>
     );
 }

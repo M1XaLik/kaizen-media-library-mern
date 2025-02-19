@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+import Loader from "./components/Loader";
+
 // div animation
 import { motion } from "framer-motion";
 
@@ -17,13 +19,10 @@ const token = localStorage.getItem("token");
 const AdminPanelPage = () => {
     const [mediaList, setMediaList] = useState([]);
 
-    useEffect(() => {
-        // Check if token exists
-        // if (!token) {
-        //     console.error("No token found, please log in");
-        //     return;
-        // }
+    // STATE for LOADER
+    const [isLoading, setIsLoading] = useState(true);
 
+    useEffect(() => {
         // to GET ALL of the media to be approved
         const fetchApprovalMedia = async () => {
             try {
@@ -35,7 +34,10 @@ const AdminPanelPage = () => {
 
                 setMediaList(response.data); // Update state with fetched data
             } catch (error) {
-                console.log("Error fetching data:", error);
+                // console.log("Error fetching data:", error);
+                setIsLoading(false);
+            } finally {
+                setIsLoading(false);
             }
         };
 
@@ -83,6 +85,10 @@ const AdminPanelPage = () => {
             toast.error("Something went wrong!");
         }
     };
+
+    if (isLoading) {
+        return <Loader />; // Show Loader before animation
+    }
 
     // RENDER THE PAGE
     return (

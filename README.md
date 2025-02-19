@@ -5,10 +5,12 @@
 ### English:
 
 -   **Implemented loader**: A loader has been integrated to display an animated indicator during page transitions and data fetching. This enhancement helps ensure a smooth user experience by preventing layout shifts and visual glitches caused by unstyled or incomplete content.
+-   **Fixed bugs and restricted navbar visibility on specific pages**: Resolved various bugs affecting the application's functionality. Additionally, the navbar is now hidden on designated pages to enhance user experience and maintain a cleaner interface where necessary.
 
 ### Українська:
 
 -   **Імплементовано loader**: До системи інтегровано лоадер, що відображає анімований індикатор під час завантаження сторінок та даних. Це покращення сприяє плавному користувацькому досвіду, запобігаючи зсувам макету та візуальним збоєм через неповний або неоформлений контент.
+-   **Виправлено баги та обмежено відображення Navbar на певних сторінках**: Усунуто різні помилки, що впливали на роботу застосунку. Крім того, Navbar тепер приховується на визначених сторінках для покращення користувацького досвіду та збереження чистого інтерфейсу там, де це потрібно.
 
 ---
 

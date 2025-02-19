@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import React from "react";
 
+import Loader from "./components/Loader";
+
 import { motion } from "framer-motion";
 import axios from "axios";
 
@@ -14,14 +16,15 @@ const UserProfilePage = () => {
     const [username, setUserName] = useState();
     const [useremail, setUserEmail] = useState();
 
+    // STATE for LOADER
+    const [isLoading, setIsLoading] = useState(true);
+
     useEffect(() => {
         // Function to fetch user data from the server
         const fetchUserData = async () => {
             try {
                 // Retrieve the token from localStorage
                 const token = localStorage.getItem("token");
-
-                // console.log("TOKEN: ", token);
 
                 // Check if token exists
                 if (!token) {
@@ -37,21 +40,21 @@ const UserProfilePage = () => {
                 });
 
                 // LOG OUT THE RESPONSE
-                console.log("Response:", response);
+                // console.log("Response:", response);
 
                 // Assign received data to the variable
                 const data = await response.data;
-                console.log("data.user: ", data.user);
+                // console.log("data.user: ", data.user);
 
                 // If response is not OK, throw an error
                 if (!data.user) {
                     console.log("Response data does not contain user object");
                 }
 
-                console.log("User data:", data.user);
-                console.log("User ID:", data.user._id);
-                console.log("User Username:", data.user.username);
-                console.log("User Email:", data.user.email);
+                // console.log("User data:", data.user);
+                // console.log("User ID:", data.user._id);
+                // console.log("User Username:", data.user.username);
+                // console.log("User Email:", data.user.email);
 
                 // CHANGE THE WEBSITE TITLE
                 document.title = `Kaizen • ${data.user.username}`;
@@ -60,14 +63,20 @@ const UserProfilePage = () => {
                 setUserName(data.user.username);
                 setUserEmail(data.user.email);
             } catch (error) {
-                // Set the error state if an error occurs
-                console.log("Error fetching data: ", error);
+                // console.log("Error fetching data: ", error);
+                setIsLoading(false);
+            } finally {
+                setIsLoading(false);
             }
         };
 
         // Call the function to fetch data
         fetchUserData();
     }, []);
+
+    if (isLoading) {
+        return <Loader />; // Show Loader before animation
+    }
 
     return (
         <motion.div

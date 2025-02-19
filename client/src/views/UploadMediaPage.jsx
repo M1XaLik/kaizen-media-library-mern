@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+
+import Loader from "./components/Loader";
 
 // TO USE NAVIGATION
 import { useNavigate } from "react-router-dom";
@@ -16,6 +18,11 @@ const serverUrl = process.env.REACT_APP_SERVER_URL;
 const token = localStorage.getItem("token");
 
 const UploadMediaPage = () => {
+    document.title = `Kaizen • UPLOAD`;
+
+    // STATE for LOADER
+    const [isLoading, setIsLoading] = useState(true);
+
     const [formData, setFormData] = useState({
         media_name: "",
         media_author: "",
@@ -55,10 +62,6 @@ const UploadMediaPage = () => {
                 throw new Error("Network response was not ok");
             }
 
-            // RECEIVED DATA from SERVER
-            // const data = await response.json();
-            // console.log("Response from server:", data);
-
             // Redirect to main page in 2 seconds
             setTimeout(() => {
                 navigate("/");
@@ -72,7 +75,13 @@ const UploadMediaPage = () => {
         }
     };
 
-    document.title = `Kaizen • UPLOAD`;
+    useEffect(() => {
+        setIsLoading(false);
+    }, []);
+
+    if (isLoading) {
+        return <Loader />; // Show Loader before animation
+    }
 
     return (
         <motion.div

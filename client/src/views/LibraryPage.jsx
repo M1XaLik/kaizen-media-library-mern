@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 import axios from "axios";
-
 import { motion } from "framer-motion";
+import Loader from "./components/Loader"; // Import loader component
 
 // get SERVER URL from .env
 const serverURL = process.env.REACT_APP_SERVER_URL;
@@ -11,6 +10,7 @@ const serverURL = process.env.REACT_APP_SERVER_URL;
 const LibraryPage = () => {
     const [medias, setMediaData] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
+    const [isLoading, setIsLoading] = useState(true); // State for loader
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -23,17 +23,11 @@ const LibraryPage = () => {
                     },
                 });
 
-                if (response.status !== 200) {
-                    throw new Error("Network response was not ok");
-                }
-
-                const data = response.data;
-
-                setMediaData(data.medias);
-                // console.log(data.medias);
-                // console.log(data.title);
+                setMediaData(response.data.medias);
             } catch (error) {
-                console.log("ERROR fetching data: ", error);
+                console.error("Error fetching library data:", error);
+            } finally {
+                setIsLoading(false); // Hide loader when data is loaded
             }
         };
 
@@ -53,6 +47,10 @@ const LibraryPage = () => {
             media.name.toLowerCase().includes(searchTerm) ||
             media.author.toLowerCase().includes(searchTerm)
     );
+
+    if (isLoading) {
+        return <Loader />; // Show Loader before animation
+    }
 
     return (
         <motion.div
@@ -96,8 +94,7 @@ const LibraryPage = () => {
                             </Link>
                         ))
                     ) : (
-                        // NEEDS SOME REWORK
-                        <div className="library-page-search-status"></div>
+                        <div className="library-page-search-status">No results found</div>
                     )}
                 </div>
             </div>

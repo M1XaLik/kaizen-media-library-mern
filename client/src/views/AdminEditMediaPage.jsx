@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
+import Loader from "./components/Loader";
+
 // div animation
 import { motion } from "framer-motion";
 
@@ -23,6 +25,9 @@ const AdminEditMediaPage = () => {
         playlist: "",
     });
 
+    // STATE for LOADER
+    const [isLoading, setIsLoading] = useState(true);
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -42,7 +47,10 @@ const AdminEditMediaPage = () => {
                 });
                 setMedia(response.data);
             } catch (error) {
-                console.log("Error fetching media:", error);
+                // console.log("Error fetching media:", error);
+                setIsLoading(false);
+            } finally {
+                setIsLoading(false);
             }
         };
 
@@ -69,6 +77,10 @@ const AdminEditMediaPage = () => {
             console.log("Error saving media:", error);
         }
     };
+
+    if (isLoading) {
+        return <Loader />; // Show Loader before animation
+    }
 
     return (
         <motion.div
