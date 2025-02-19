@@ -22,10 +22,33 @@ body {
 /* LOADER  */
 .loader-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    justify-content: center; /* Центрування по горизонталі */
+    align-items: center; /* Центрування по вертикалі */
+    height: 100vh; /* Висота контейнера – 100% висоти вікна */
 }
+
+.loader {
+    border: 8px solid #f3f3f3; /* Світло-сірий колір */
+    border-top: 8px solid #d50055; /* Синій для верхньої частини */
+    border-radius: 50%; /* Робимо форму круга */
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite; /* Анімація обертання */
+    margin: auto; /* Центрування */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* TOOLTIPS  */
+
+/* template for the future  */
 
 /* AUTH PAGES */
 

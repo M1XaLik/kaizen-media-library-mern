@@ -1,11 +1,12 @@
 import React from "react";
-import { ClipLoader } from "react-spinners";
 
-const Loader = ({ loading }) => {
+const Loader = () => {
     return (
-        <div className="loader-container">
-            <ClipLoader size={50} color={"#123abc"} loading={loading} />
-        </div>
+        <>
+            <div className="loader-container">
+                <div className="loader"></div>;
+            </div>
+        </>
     );
 };
 

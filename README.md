@@ -1,5 +1,17 @@
 # KAIZEN MERN VideoLibrary
 
+## v1.3 - 19.02.2025
+
+### English:
+
+-   **Implemented loader**: A loader has been integrated to display an animated indicator during page transitions and data fetching. This enhancement helps ensure a smooth user experience by preventing layout shifts and visual glitches caused by unstyled or incomplete content.
+
+### Українська:
+
+-   **Імплементовано loader**: До системи інтегровано лоадер, що відображає анімований індикатор під час завантаження сторінок та даних. Це покращення сприяє плавному користувацькому досвіду, запобігаючи зсувам макету та візуальним збоєм через неповний або неоформлений контент.
+
+---
+
 ## v1.2 - 09.02.2025
 
 ### English:

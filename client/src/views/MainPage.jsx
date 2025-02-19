@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-// import Loader from "./components/Loader";
+import Loader from "./components/Loader";
 
 // div animation
 import { motion } from "framer-motion";
@@ -16,7 +16,7 @@ const MainPage = () => {
     const [mixSongs, setMixSongs] = useState([]);
 
     // STATE for LOADER
-    // const [loading, setLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         // create FUNCTION to PARSE DATA from SERVER
@@ -48,7 +48,9 @@ const MainPage = () => {
             } catch (error) {
                 console.error("Error fetching main page data: \n", error);
                 // return null;
-                // setLoading(false)
+                setIsLoading(false);
+            } finally {
+                // setIsLoading(false);
             }
         };
 
@@ -64,34 +66,44 @@ const MainPage = () => {
             animate={{ y: 0 }}
             transition={{ type: "tween", duration: 0.2, ease: "easeOut" }}
         >
-            <div className="page-content">
-                <br />
-                <h2 className="category-title">Latest</h2>
-                <div className="slider-grid-container">
-                    {latestSongs.map((media) => (
-                        <Link key={media._id} className="grid-item" to={`/medias/${media._id}`}>
-                            <img src={`${serverURL}/media/${media.coverUrl}`} alt="album_cover" />
-                            <div className="grid-item-description">
-                                <div className="grid-item-title">{media.name}</div>
-                                <div className="grid-item-author">{media.author}</div>
-                            </div>
-                        </Link>
-                    ))}
+            {isLoading ? (
+                <Loader />
+            ) : (
+                <div className="page-content">
+                    <br />
+                    <h2 className="category-title">Latest</h2>
+                    <div className="slider-grid-container">
+                        {latestSongs.map((media) => (
+                            <Link key={media._id} className="grid-item" to={`/medias/${media._id}`}>
+                                <img
+                                    src={`${serverURL}/media/${media.coverUrl}`}
+                                    alt="album_cover"
+                                />
+                                <div className="grid-item-description">
+                                    <div className="grid-item-title">{media.name}</div>
+                                    <div className="grid-item-author">{media.author}</div>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                    <br />
+                    <h2 className="category-title">Mix</h2>
+                    <div className="slider-grid-container">
+                        {mixSongs.map((media) => (
+                            <Link key={media._id} className="grid-item" to={`/medias/${media._id}`}>
+                                <img
+                                    src={`${serverURL}/media/${media.coverUrl}`}
+                                    alt="album_cover"
+                                />
+                                <div className="grid-item-description">
+                                    <div className="grid-item-title">{media.name}</div>
+                                    <div className="grid-item-author">{media.author}</div>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
                 </div>
-                <br />
-                <h2 className="category-title">Mix</h2>
-                <div className="slider-grid-container">
-                    {mixSongs.map((media) => (
-                        <Link key={media._id} className="grid-item" to={`/medias/${media._id}`}>
-                            <img src={`${serverURL}/media/${media.coverUrl}`} alt="album_cover" />
-                            <div className="grid-item-description">
-                                <div className="grid-item-title">{media.name}</div>
-                                <div className="grid-item-author">{media.author}</div>
-                            </div>
-                        </Link>
-                    ))}
-                </div>
-            </div>
+            )}
         </motion.div>
     );
 };
