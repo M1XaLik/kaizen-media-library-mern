@@ -18,8 +18,6 @@ const serverUrl = process.env.REACT_APP_SERVER_URL;
 const token = localStorage.getItem("token");
 
 const UploadMediaPage = () => {
-    document.title = `Kaizen • UPLOAD`;
-
     // STATE for LOADER
     const [isLoading, setIsLoading] = useState(true);
 
@@ -33,21 +31,27 @@ const UploadMediaPage = () => {
         media_cover: null,
     });
 
+    useEffect(() => {
+        document.title = `Kaizen • UPLOAD`;
+        setTimeout(() => setIsLoading(false), 1000); // Loader
+    }, []);
+
     const navigate = useNavigate();
 
     const handleChange = (e) => {
-        const { name, value, files } = e.target; // Destructure name, value, and files from the event target
+        const { name, value, files } = e.target;
         setFormData((prevData) => ({
-            ...prevData, // Spread previous state values
-            [name]: files ? files[0] : value, // Update formData: use the file if files exist, otherwise use the input value
+            ...prevData,
+            [name]: files ? files[0] : value,
         }));
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // to stop page refreshing
-        const formDataToSend = new FormData(); // Create a new FormData object for collecting form data
+        e.preventDefault();
+        setIsLoading(true);
+        const formDataToSend = new FormData();
         Object.entries(formData).forEach(([key, value]) => {
-            formDataToSend.append(key, value); // Append each key-value pair to the FormData object
+            formDataToSend.append(key, value);
         });
 
         try {
@@ -58,29 +62,21 @@ const UploadMediaPage = () => {
                 },
             });
 
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
+            if (response.data.status === "success") {
+                toast.success(response.data.message);
+                setTimeout(() => navigate("/"), 2000);
+            } else {
+                toast.error(response.data.message);
+                setIsLoading(false);
             }
-
-            // Redirect to main page in 2 seconds
-            setTimeout(() => {
-                navigate("/");
-            }, 2000);
-
-            toast.success("Upload Successful!");
         } catch (error) {
-            // console.error("Error submitting media:", error);
             toast.error("Error submitting media");
             navigate("/");
         }
     };
 
-    useEffect(() => {
-        setIsLoading(false);
-    }, []);
-
     if (isLoading) {
-        return <Loader />; // Show Loader before animation
+        return <Loader />;
     }
 
     return (
@@ -89,11 +85,9 @@ const UploadMediaPage = () => {
             animate={{ y: 0 }}
             transition={{ type: "tween", duration: 0.2, ease: "easeOut" }}
         >
-            {/* <h1 className="page-title-text">Upload</h1> */}
             <br className="hide-when-phone-resolution" />
             <div className="page-content">
                 <div className="">
-                    {/* UPLOAD FORM */}
                     <form
                         onSubmit={handleSubmit}
                         encType="multipart/form-data"

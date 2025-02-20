@@ -3,8 +3,6 @@ import React from "react";
 
 // Transfer isAdmin as an object of props in this {}
 const Navbar = ({ isAdmin }) => {
-    const isAuthenticated = !!localStorage.getItem("token");
-
     return (
         <>
             <div className="navbar">

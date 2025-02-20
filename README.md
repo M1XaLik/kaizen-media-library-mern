@@ -28,7 +28,7 @@
 
 ---
 
-## v1.1 - 26.01.2025
+## v1.1.5 - 26.01.2025
 
 ### English:
 
@@ -69,5 +69,6 @@
 ### English:
 
 **'KAIZEN' birthdate**
+
 First stable version of the Music (Media) Library that works somelike a YouTube Music (i mean you can find a song by its author and title, and music is in the form of video)
 but still lacks the authentication.
