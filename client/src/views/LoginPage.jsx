@@ -25,6 +25,9 @@ const Login = () => {
             localStorage.setItem("token", response.data.token); // Store the token in localStorage
             toast.success("Login successful!");
             navigate("/");
+
+            // fully reload the page to reload certain components
+            window.location.reload();
         } catch (error) {
             toast.error("Login failed. Please check your credentials."); // Set error message
         }
