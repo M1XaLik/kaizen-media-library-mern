@@ -36,8 +36,7 @@ const Register = () => {
             transition={{ type: "tween", duration: 0.2, ease: "easeOut" }}
         >
             <div className="auth-page-card">
-                <div className="above-auth-text">REGISTER</div>
-                <hr />
+                <h1 className="above-auth-text">REGISTER</h1>
                 <div className="login-form">
                     <form onSubmit={handleRegister}>
                         <div className="input-group">

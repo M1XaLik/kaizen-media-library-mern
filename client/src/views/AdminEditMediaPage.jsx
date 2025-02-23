@@ -95,12 +95,15 @@ const AdminEditMediaPage = () => {
                         <label>Name:</label>
                         <input type="text" name="name" value={media.name} onChange={handleChange} />
                         <label>Description:</label>
-                        <input
+                        <textarea
                             type="text"
                             name="description"
+                            rows="4"
+                            cols="50"
                             value={media.description}
                             onChange={handleChange}
                         />
+                        <br />
                         <label>Author:</label>
                         <input
                             type="text"
@@ -108,7 +111,6 @@ const AdminEditMediaPage = () => {
                             value={media.author}
                             onChange={handleChange}
                         />
-
                         {/* <label>Date:</label>
                     <input type="date" name="date" value={media.date} onChange={handleChange} /> */}
                         {/* <label>Playlist:</label>

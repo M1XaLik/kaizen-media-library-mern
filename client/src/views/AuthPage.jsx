@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 const AuthPageCard = () => {
     return (
         <div className="auth-page-card">
-            <div className="above-auth-text">KAIZEN 改善</div>
-            <hr />
+            <h1 className="above-auth-text">KAIZEN 改善</h1>
             <div className="login-form">
                 <p>
                     Ласкаво просимо до нашої онлайн-бібліотеки аудіозаписів - вашого безкоштовного

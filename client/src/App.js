@@ -91,7 +91,7 @@ function App() {
                     path="/library"
                     element={
                         <AuthWrapper>
-                            <LibraryPage />
+                            <LibraryPage isAdmin={isAdmin} />
                         </AuthWrapper>
                     }
                 />

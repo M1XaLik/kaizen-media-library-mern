@@ -40,8 +40,7 @@ const Login = () => {
             transition={{ type: "tween", duration: 0.2, ease: "easeOut" }}
         >
             <div className="auth-page-card">
-                <div className="above-auth-text">Login</div>
-                <hr />
+                <h1 className="above-auth-text">Login</h1>
                 <div className="login-form">
                     <form onSubmit={handleLogin}>
                         {/* USERNAME  */}

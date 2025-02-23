@@ -149,20 +149,23 @@ router.patch("/admin/approve/:id", authMiddleware, verifyAdmin, async (req, res)
 router.delete("/admin/delete/:id", async (req, res) => {
     try {
         const { id } = req.params;
-        const media = await Media.findById(id);
 
+        // Check if the media exists before attempting to delete it
+        const media = await Media.findById(id);
         if (!media) {
             return res.status(404).json({ error: "Media not found" });
         }
 
-        await media.remove();
-        res.status(200).json({ message: "Media deleted successfully" });
+        // Delete the media safely
+        await media.deleteOne();
 
-        logger.debug("Media deleted successfully");
+        // Log the successful deletion
+        logger.debug(`Media with ID ${id} deleted successfully`);
+        return res.status(200).json({ message: "Media deleted successfully" });
     } catch (error) {
-        res.status(500).json({ error: "Error deleting media" });
-
-        logger.debug("Error deleting media: ", error);
+        // Log any errors that occur during deletion
+        logger.error(`Error deleting media: ${error.message}`);
+        return res.status(500).json({ error: "Error deleting media" });
     }
 });
 

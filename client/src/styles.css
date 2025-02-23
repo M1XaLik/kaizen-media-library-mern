@@ -272,6 +272,8 @@ body {
 }
 
 .library-page-search-status {
+    width: 90vw;
+
     color: white;
 
     display: flex;
@@ -482,13 +484,17 @@ body {
 }
 
 .library-grid-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     position: relative;
     z-index: 1;
 
     color: white;
 
     border-radius: 10px;
-    padding: 10px;
+    padding: 5px;
     text-decoration: none;
     background-color: #0a2239;
     /* background-color: #c5c3db; */
@@ -502,6 +508,7 @@ body {
     transform: scale(1.1);
     z-index: 999;
 }
+
 .library-grid-item img {
     border-radius: 5px;
     width: 100%;
@@ -515,6 +522,29 @@ body {
     margin: 5px;
 
     /* text-align: center; */
+}
+
+.delete-element-library-page {
+    background-color: #ff0055;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+
+    margin: 5px 5px 5px 5px;
+}
+
+.delete-element-library-page:hover {
+    background-color: #b0003b;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* UPLOAD FORM && PAGE */
@@ -644,7 +674,7 @@ textarea.form-text-field {
 .logout-button {
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #ff4b4b;
+    background-color: #ec1451;
     color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -652,7 +682,7 @@ textarea.form-text-field {
 }
 
 .logout-button:hover {
-    background-color: #ff2a2a;
+    background-color: #c20e41;
 
     transform: scale(1.1);
 }
@@ -664,9 +694,13 @@ textarea.form-text-field {
     grid-template-columns: 1fr; /* ONE ELEMENT IN A ROW */
     place-items: center;
     padding: 10px 5%;
+
+    gap: 20px;
 }
 
 .admin-panel-grid-item {
+    max-width: 40%;
+
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -800,6 +834,21 @@ textarea.form-text-field {
     transition: 0.1s ease;
 }
 
+.edit-media-page-container textarea {
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #415a77;
+
+    padding: 10px;
+    margin: 10px 0px 10px 0px;
+
+    font-size: 16px;
+    border-radius: 6px;
+    transition: 0.1s ease;
+
+    min-height: 300px;
+}
+
 .edit-media-page-container input:focus {
     outline: 2px solid #778da9;
     outline-offset: 4px;
@@ -862,6 +911,10 @@ textarea.form-text-field {
         width: 50vw;
         font-size: 14px;
     }
+
+    .admin-panel-grid-item {
+        max-width: inherit;
+    }
 }
 
 @media (max-width: 500px) {
@@ -906,6 +959,10 @@ textarea.form-text-field {
         grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     }
 
+    .grid-item-title {
+        font-size: 0.9rem;
+    }
+
     .view-media {
         width: 100vw;
         border-radius: inherit;
@@ -914,9 +971,15 @@ textarea.form-text-field {
     .library-grid-item {
         padding: 0px;
         display: flex;
+
+        flex-direction: row;
     }
     .library-grid-item img {
-        width: 20%;
+        width: 20vw;
+    }
+    .library-grid-item-info-container {
+        display: flex;
+        flex-direction: row;
     }
     .library-grid-item-description {
         display: flex;

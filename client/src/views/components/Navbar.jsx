@@ -54,7 +54,7 @@ const Navbar = ({ isAdmin }) => {
                                 <button>
                                     <Link to="/admin">
                                         <i
-                                            className="fa-solid fa-user-secret fa-2x"
+                                            className="fa-solid fa-shield-halved fa-2x"
                                             style={{ color: "white" }}
                                         ></i>
                                     </Link>
