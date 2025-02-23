@@ -71,7 +71,11 @@ function App() {
         <>
             {/* TO HIDE NAVBAR ON THE SPECIFIC PAGES  */}
             {hiddenNavbarPaths.includes(location.pathname) ? null : <Navbar isAdmin={isAdmin} />}
-            <ToastContainer />
+
+            {/* styles for the toastify  */}
+            <ToastContainer className="dark-toastify" toastClassName="Toastify__toast" />
+
+            {/* ROUTES  */}
             <Routes>
                 <Route exact path="/auth" element={<AuthPageCard />} />
                 <Route exact path="/register" element={<Register />} />
@@ -99,7 +103,7 @@ function App() {
                     path="/medias/:id"
                     element={
                         <AuthWrapper>
-                            <MediaDetailsPage />
+                            <MediaDetailsPage isAdmin={isAdmin} />
                         </AuthWrapper>
                     }
                 />

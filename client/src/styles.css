@@ -8,6 +8,12 @@ html {
     --background_color: #000000;
 }
 
+/* TOASTEE MODULE CSS  */
+.dark-toastify .Toastify__toast {
+    background-color: #333;
+    color: #fff;
+}
+
 body {
     background-color: #020b14;
     /* background-color: #0e7c7b; */
@@ -248,27 +254,51 @@ body {
 }
 
 .search-container {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.search-box-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 80%;
+    max-width: 600px;
 }
 
 .search-box {
-    padding: 10px;
-    width: 80%;
-    max-width: 400px;
+    width: 100%;
+    padding: 12px 15px 12px 40px;
     border-radius: 10px;
-    /* background-color: #020b14; */
-
+    background-color: #081828;
+    color: #d1d5db;
     font-size: 16px;
-
-    border: 1px solid gray;
-
-    /* color: white; */
-
-    transition: 0.2s ease;
+    border: none;
+    outline: none;
+    outline-offset: 4px;
+    transition: 0.1s ease;
 }
+
 .search-box:focus {
-    border-color: white;
-    max-width: 700px;
+    outline: 2px solid #9400e4;
+    background-color: #0c2138;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 18px;
+    transition: 0.3s ease;
+}
+
+.search-box:focus + .search-icon {
+    color: #1e90ff;
 }
 
 .library-page-search-status {
@@ -364,6 +394,37 @@ body {
     margin-top: 10px;
 
     object-fit: contain;
+}
+
+.delete-element-media-page-container {
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.delete-element-media-page {
+    background-color: #ff0059;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.1s ease;
+}
+
+.delete-element-media-page:hover {
+    background-color: #b60543;
 }
 
 /* OTHER STYLES  */
@@ -991,5 +1052,14 @@ textarea.form-text-field {
 
     .form-background {
         border-radius: 0px;
+    }
+
+    .search-box {
+        font-size: 14px;
+        padding: 10px 12px 10px 35px;
+    }
+    .search-icon {
+        left: 10px;
+        font-size: 14px;
     }
 }

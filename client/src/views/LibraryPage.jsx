@@ -87,16 +87,19 @@ const LibraryPage = ({ isAdmin }) => {
                 <h1 className="library-page-title-text">LIBRARY</h1>
                 <br />
                 <div className="search-container">
-                    <i className="fas fa-search"></i>
-                    <input
-                        type="text"
-                        id="search"
-                        className="search-box"
-                        placeholder="Що ви хочете знайти?"
-                        value={searchTerm}
-                        onChange={handleSearchChange}
-                    />
+                    <div className="search-box-wrapper">
+                        <i className="fas fa-search search-icon"></i>
+                        <input
+                            type="text"
+                            id="search"
+                            className="search-box"
+                            placeholder="Що ви хочете знайти?"
+                            value={searchTerm}
+                            onChange={handleSearchChange}
+                        />
+                    </div>
                 </div>
+
                 <br />
 
                 <div className="grid-container">

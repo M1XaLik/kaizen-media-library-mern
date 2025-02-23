@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import Loader from "./components/Loader";
@@ -13,10 +13,12 @@ import { motion } from "framer-motion";
 // get SERVER URL from .env
 const serverURL = process.env.REACT_APP_SERVER_URL;
 
-const MediaDetailsPage = () => {
+const MediaDetailsPage = ({ isAdmin }) => {
     const { id } = useParams();
     const [media, setMedia] = useState(null);
     const [isLoading, setIsLoading] = useState(true); // State for loader
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchMedia = async () => {
@@ -48,6 +50,26 @@ const MediaDetailsPage = () => {
 
         fetchMedia();
     }, [id]);
+
+    // DELETE BUTTON
+    const handleDelete = async (id) => {
+        if (!window.confirm("Ви впевнені, що хочете видалити цей медіафайл?")) return;
+
+        const token = localStorage.getItem("token");
+        try {
+            await axios.delete(`${serverURL}/admin/delete/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            // Redirect to the home page after deletion
+            navigate("/");
+        } catch (error) {
+            console.error("Error deleting media:", error);
+            alert("Не вдалося видалити медіафайл.");
+        }
+    };
 
     if (isLoading) {
         return <Loader />; // Show Loader before animation
@@ -100,6 +122,19 @@ const MediaDetailsPage = () => {
                         <br /> <p>About:</p> <p>{media.description}</p>
                     </div>
                 </div>
+
+                {isAdmin && (
+                    <div className="delete-element-media-page-container">
+                        {/* <h2>DELETE ELEMENT</h2> */}
+                        <button
+                            className="delete-element-media-page"
+                            onClick={() => handleDelete(media._id)}
+                        >
+                            <i className="fa-solid fa-trash fa-2x" style={{ color: "white" }}></i>
+                        </button>
+                        <div>DELETE ELEMENT</div>
+                    </div>
+                )}
             </div>
         </motion.div>
     );
