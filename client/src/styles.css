@@ -439,7 +439,9 @@ body {
     border: 2px solid #415a77; /* Non-blurry border */
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    max-width: 800px;
+
+    max-width: 600px;
+
     margin: 20px auto;
     color: #e0e1dd;
 }
@@ -940,8 +942,8 @@ textarea.form-text-field {
     }
 
     .view-media {
-        max-width: inherit;
-        width: 100vw;
+        max-width: 90vw;
+        height: 80vh;
         height: inherit;
 
         margin: inherit;
@@ -1024,9 +1026,8 @@ textarea.form-text-field {
         font-size: 0.9rem;
     }
 
-    .view-media {
-        width: 100vw;
-        border-radius: inherit;
+    .media-container {
+        margin-top: 2vh;
     }
 
     .library-grid-item {

@@ -44,7 +44,7 @@ const AdminPanelPage = () => {
         fetchApprovalMedia();
 
         // DOCUMENT TITLE
-        document.title = "Kaizen • Admin Panel";
+        document.title = "Kaizen • ADMIN PANEL";
     }, []);
 
     const approveMedia = async (id) => {

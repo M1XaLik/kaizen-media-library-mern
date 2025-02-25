@@ -19,7 +19,7 @@ const MainPage = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        document.title = `Kaizen • HOME`;
+        document.title = `Kaizen`;
 
         // create FUNCTION to PARSE DATA from SERVER
         const fetchData = async () => {

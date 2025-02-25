@@ -57,7 +57,7 @@ const AdminEditMediaPage = () => {
         fetchMedia();
 
         // DOCUMENT TITLE
-        document.title = "Kaizen • Admin Panel";
+        document.title = "Kaizen • ADMIN PANEL";
     }, [id]);
 
     const handleChange = (e) => {
