@@ -4,9 +4,32 @@ html {
     padding: 0;
 }
 
-:root {
-    --background_color: #000000;
+/* Customize scrollbar width */
+::-webkit-scrollbar {
+    width: 4px; /* Thin scrollbar */
 }
+
+/* Scrollbar track (background) */
+::-webkit-scrollbar-track {
+    background: #081828; /* Dark background */
+    border-radius: 10px;
+}
+
+/* Scrollbar thumb (the moving part) */
+::-webkit-scrollbar-thumb {
+    background: #b41eff; /* Blue color */
+    border-radius: 10px;
+    transition: 0.3s ease; /* Smooth transition */
+}
+
+/* Scrollbar thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #7f15b3;
+}
+
+/* :root {
+    --background_color: #000000;
+} */
 
 /* TOASTEE MODULE CSS  */
 .dark-toastify .Toastify__toast {
@@ -1010,6 +1033,8 @@ textarea.form-text-field {
     .slider-grid-container {
         grid-template-columns: repeat(5, minmax(250px, 1fr));
     }
+
+    /* DISPLAY SCROLLBAR  */
     .slider-grid-container::-webkit-scrollbar {
         display: none;
     }

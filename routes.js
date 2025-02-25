@@ -320,7 +320,7 @@ router.post("/upload_media", singleUpload, authMiddleware, async (req, res) => {
         await newMedia.save();
 
         // SEND JSON
-        res.json({ status: "success", message: "Successfully added to database" });
+        res.json({ status: "success", message: "Successfully uploaded" });
     } catch (error) {
         logger.debug("An error occurred while adding an element:", error);
 
